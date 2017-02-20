@@ -1,0 +1,112 @@
+$(document).ready(function() {
+   var id = 0;
+   var i = 0;
+   var datas = []
+
+   $("#save").click(function(e) {
+       e.preventDefault();
+       var temp = {}
+       temp["tempName"] = $('input[name=name-box]').val();
+       temp["tempEmail"] = $('input[name=email-box]').val();
+       temp["tempAge"] = $('input[name=age-box]').val();
+       temp["tempPhone"] = $('input[name=phone-box]').val();
+       datas.push(temp)
+       drawTable();
+       // $('.tablerow').append('<td>' + tempName + '</td><td>' + tempEmail + '</td><td>' + tempAge + '</td><td>' + tempPhone + '</td><td><a href="#" class ="edit "> edit </a></td> <td> <a href="#" class="close"> X </a></td></tr>');        
+
+       $('input[type=text]').each(function() {
+           $(this).val('');
+       });
+
+   });
+
+   function drawTable() {
+       $('.child').remove()
+       for (var i = 0; i < datas.length; i++) {
+           $('#myTable tr:last').after('<tr class="child"><td>' + (i + 1) + '<\/td> <td>' + datas[i]["tempName"] + '<\/td> <td>' + datas[i]["tempEmail"] + '<\/td> <td>' + datas[i]["tempAge"] + '<\/td> td>' + datas[i]["tempPhone"] + '<\/td><td> <span class="edit"> edit </span> <\/td><td><span class="remove"> X </span><\/td></tr>');
+       }
+   }
+
+   /*function AutoNumber(){
+       $('table tr').each(function(i){
+           $(this).find('span').text(i);
+       });
+   */
+
+   $("#myTable").on('click', '.remove', function() {
+       var idval = 0;
+       var tid = $(this).parent().parent().find('td:first').text()
+       datas.splice(parseInt(tid) - 1, 1)
+       drawTable();
+       /*  
+    var table=document.getElementById("myTable");
+   var table_len=(table.rows.length)-1;
+    alert(--table_len);
+    
+   var table = document.getElementById("mytab1");
+for (var i = 1;i<=table_len;i++){
+   idval=parseInt(idval);
+   ++idval;
+  $('#myTable').find('tr').eq(i).text(idval);
+   
+   
+   
+var tmp=$("#myTable tr:eq("+i+") td:eq(1)").text();
+   alert("tmp "+tmp);
+   $('#myTable').find('td').eq(2).text(tmp);
+   
+  //   tmp=$("#myTable td:eq("+i+") td:eq(2)").text();
+   $('#myTable').find('td').eq(3).text(tmp);
+    // tmp=$("#myTable td:eq("+i+") td:eq(3)").text();
+   $('#myTable').find('td').eq(4).text(tmp);
+   //  tmp=$("#myTable td:eq("+i+") td:eq(4)").text();
+   $('#myTable').find('td').eq(5).text(tmp);
+}
+
+*/
+
+   });
+
+
+
+   $('body').delegate('table#myTable tr ', 'click', function() {
+       var tid = $(this).find('td:first').text();
+       //   alert(tid);
+       tid = parseInt(tid);
+       tid++;
+       var tname = $("#myTable tr:eq(" + tid + ") td:eq(1)").text();
+       var temail = $("#myTable tr:eq(" + tid + ") td:eq(2)").text();
+       var tage = $("#myTable tr:eq(" + tid + ") td:eq(3)").text();
+       var tph = $("#myTable tr:eq(" + tid + ") td:eq(4)").text();
+
+
+
+       //var t = document.getElementById('myTable');
+       //var tmp= $(t).find('tr: eq(tid) td:eq(2)').text();
+
+
+       //document.getElementById('#tb1').value=$('#myTable tr:eq(2) td:eq(1)').text();
+
+       //document.getElementById('#tb1').value=tid.cells[1].innerHTMLl;
+
+       $('#tb1').val(tname);
+       $('#tb2').val(temail);
+       $('#tb3').val(tage);
+       $('#tb4').val(tph);
+
+   });
+
+   /*
+$("#myTable tr").click(function(){
+      var str=this.innerText;
+    var i = str.split('').indexOf(" ");
+    alert (str.slice(0,i));
+
+   });*/
+   //$('body').delegate('table#myTable tr','click',function(){
+   //    alert();
+
+   //});
+
+
+});

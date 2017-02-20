@@ -1,0 +1,43 @@
+body{
+font-family:arial;
+    
+}
+button{
+    width: 100px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid black;
+    margin-top: 20px;
+}
+
+th, td {
+    text-align: left;
+    padding: 30px
+    border: 1px solid black;
+    
+}
+th{
+    background-color: antiquewhite;
+}
+
+tr:nth-child(even){background-color: lightgray}
+
+
+.mainform{
+    margin=50px;
+    padding=100px;
+    padding-top: 30px;
+}
+.edit{
+    color:orange;
+cursor: pointer;
+    
+}
+.remove
+{   cursor: pointer;
+    padding-right: 30px;
+    text-align: center;
+    font-family: arial;
+}
